@@ -104,7 +104,7 @@ print(unique_sorted([]))
 print(unique_sorted([-1, -1, 0, 2, 2]))
 print(unique_sorted([1.0, 1, 2.5, 2.5, 0]))
 ```
-![Картинка 2](/images/unique_sorted_output.png)
+![Картинка 2](/images/unique_sorted.png)
 
 ## Задание 3
 
