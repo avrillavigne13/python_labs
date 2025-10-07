@@ -79,7 +79,7 @@ print(f"Длина (символов): {len(format_name)}")
 ```python
 def min_max(nums: list[float | int]) -> tuple[float | int, float | int]:
     if not nums:
-        return("ValueError")
+        raise ValueError
     minimum = min(nums)
     maximum = max(nums)
     return(minimum, maximum)   
@@ -115,13 +115,13 @@ def flatten(mat: list[list | tuple]) -> list:
         if isinstance(row, (list,tuple)):
             result.extend(row)
         else:
-            return ("TypeError")
+            raise TypeError
     return(result)
     
-print(flatten([[1, 2], "ab"]))
 print(flatten(([1, 2], [3, 4])))
 print(flatten(([1, 2], (3, 4, 5))))
 print(flatten(([1], [], [2, 3])))
+print(flatten([[1, 2], "ab"]))
 ```
 ![Картинка 3](/images/flatten_output.png)
 
@@ -137,7 +137,7 @@ def transpose(mat: list[list[float | int]]) -> list[list]:
     
     for row in mat:
         if len(row) != cols:
-            return("ValueError")
+            raise ValueError
     
     result = []
     
@@ -169,7 +169,7 @@ def row_sums(mat: list[list[float | int]]) -> list[float]:
 
     for row in mat:
         if len(row) != cols:
-            return ("ValueError")        
+            raise ValueError        
     sums = []
     for row in mat:          
         total = sum(row)      
@@ -194,7 +194,7 @@ def col_sums(mat: list[list[float | int]]):
 
     for row in mat:
         if len(row) != cols:
-            return "ValueError"   
+            raise ValueError   
  
     sums = []
 
@@ -208,7 +208,7 @@ def col_sums(mat: list[list[float | int]]):
 print(col_sums([[1, 2, 3], [4, 5, 6]]))  
 print(col_sums([[-1, 1], [10, -10]]))    
 print(col_sums([[0, 0], [0, 0]]))        
-print(col_sums([[1, 2], [3]]))  
+print(col_sums([[1, 2], [3]]))    
 ```
 ![Картинка 6](/images/col_sums_output.png)
 
@@ -217,20 +217,27 @@ print(col_sums([[1, 2], [3]]))
 ```python
 def format_record(rec: tuple[str, str, float]):
     fio, group, gpa = rec
+    if not isinstance(fio, str) or not fio.strip():
+        raise ValueError("ФИО не должно быть пустой строкой.")
+    if not isinstance(group, str) or not group.strip():
+        raise ValueError("Группа не должна быть пустой строкой.")
+    if not isinstance(gpa, (int, float)):
+        raise ValueError("GPA должно быть числом.")
     parts = fio.strip().split()
-    family = parts[0]
+    surname = parts[0]
+    surname=(surname.title())
     initials = ""
     for part in parts[1:]:
         initials += part[0].upper() + "."
     if not initials:
         initials = ""
     form_gpa=f"{gpa:.2f}"
-    return f"{family} {initials}, гр. {group}, GPA {form_gpa}"
-print(format_record(("Иванов Иван Иванович", "BIVT-25", 4.6)))
+    return f"{surname} {initials}, гр. {group}, GPA {form_gpa}"
 print(format_record(("Петров Пётр", "IKBO-12", 5.0)))
 print(format_record(("Петров Пётр Петрович", "IKBO-12", 5.0)))
 print(format_record(("Петров Пётр Петрович", "IKBO-12", 5.0)))
 print(format_record(("  сидорова  анна   сергеевна ", "ABB-01", 3.999)))
+print(format_record((34141, "BIVT-25", 4.6)))
 ```
 ![Картинка 7](/images/tuples_output.png)
 
