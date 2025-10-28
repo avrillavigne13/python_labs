@@ -8,8 +8,10 @@ from lib.text import normalize, tokenize, count_freq, top_n
 
 def main():
     input_file = "src/data/lab04/input.txt"  
-    output_file = "src/data/lab04/report.csv"  
-    
+    output_file = "src/data/lab04/report.csv"
+
+    if input_file.suffix.lower() != '.txt':
+        raise ValueError("Неверный тип файла. Ожидается .txt")
     try:
         text = read_text(input_file)
         freq = count_freq(tokenize(normalize(text)))
@@ -27,6 +29,10 @@ def main():
     except Exception as e:
         print(f" Ошибка: {e}")
         sys.exit(1)
+def validate_output_file(filename):
+    path = Path(filename)
+    if path.suffix.lower() != '.csv':
+        raise ValueError()
 
 if __name__ == "__main__":
     main()
