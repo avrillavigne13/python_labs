@@ -72,12 +72,12 @@ def test_csv_to_json_invalid_csv(
 
     try:
         csv_to_json(str(src), str(dst))
-        print("✅ Функция выполнилась БЕЗ ошибок")
-        print(f"📁 Создан файл: {dst.exists()}")
+        print(" Функция выполнилась БЕЗ ошибок")
+        print(f" Создан файл: {dst.exists()}")
         if dst.exists():
-            print(f"📄 Содержимое: {dst.read_text()}")
+            print(f" Содержимое: {dst.read_text()}")
     except Exception as e:
-        print(f"❌ Ошибка: {type(e).__name__}: {e}")
+        print(f" Ошибка: {type(e).__name__}: {e}")
 
     with pytest.raises(ValueError):
         csv_to_json(str(src), str(dst))
