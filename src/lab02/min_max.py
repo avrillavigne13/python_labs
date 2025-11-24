@@ -3,7 +3,7 @@ def min_max(nums: list[float | int]) -> tuple[float | int, float | int]:
         raise ValueError
     minimum = min(nums)
     maximum = max(nums)
-    return(minimum, maximum)   
+    return (minimum, maximum)
 
 
 print(min_max([3, -1, 5, 5, 0]))

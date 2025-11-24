@@ -3,7 +3,7 @@ from pathlib import Path
 import sys
 import os
 
-sys.path.append(os.path.join(os.path.dirname(__file__), "..", 'lab05'))
+sys.path.append(os.path.join(os.path.dirname(__file__), "..", "lab05"))
 
 from json_csv import json_to_csv, csv_to_json
 from csv_xlsx import csv_to_xlsx
@@ -41,7 +41,6 @@ def build_parser() -> argparse.ArgumentParser:
 def main(argv=None):
     if argv is None:
         argv = sys.argv[1:]
-
 
     if not argv:
         print("CLI-конвертер данных (json2csv, csv2json, csv2xlsx)\n")
@@ -109,7 +108,6 @@ def main(argv=None):
             "  python3 src/lab_06/cli_convert.py csv2xlsx --in data/samples/файл.csv --out data/out/файл.xlsx\n"
         )
         return
-
 
     parser = build_parser()
     args = parser.parse_args(argv)

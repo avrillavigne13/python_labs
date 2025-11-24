@@ -4,7 +4,7 @@ import os
 import sys
 
 sys.path.append(os.path.join(os.path.dirname(__file__), "../lib"))
-from src.lib.io_helper import read_text, write_csv, get_file_extension
+from io_helper import read_text, write_csv, get_file_extension
 
 
 def json_to_csv(json_path: str, csv_path: str) -> None:
@@ -86,11 +86,3 @@ def csv_to_json(csv_path: str, json_path: str) -> None:
             json.dump(data, f, ensure_ascii=False, indent=2)
     except Exception as e:
         raise ValueError(f"Ошибка записи JSON: {e}")
-
-
-json_to_csv(
-    "src/data/lab05/samples/people.json", "src/data/lab05/out/people_from_json.csv"
-)
-csv_to_json(
-    "src/data/lab05/samples/people.csv", "src/data/lab05/out/people_from_csv.json"
-)
