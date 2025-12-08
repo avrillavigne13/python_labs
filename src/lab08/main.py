@@ -1,12 +1,10 @@
 import sys
 import os
 
-# Добавляем src в путь поиска модулей
 current_dir = os.path.dirname(os.path.abspath(__file__))
 parent_dir = os.path.dirname(current_dir)
 sys.path.insert(0, parent_dir)
 
-# Теперь можно импортировать
 from lab08.serialize import students_from_json, students_to_json
 from lab08.models import Student
 
